@@ -31,7 +31,7 @@ namespace PSWeb_Server.Controllers
         }
 
         [HttpPost]
-        [Route("registration")]
+        [Route("login")]
         public Response Login(Users users)
         {
             Response response = new Response();

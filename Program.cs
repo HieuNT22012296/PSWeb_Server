@@ -1,4 +1,6 @@
 
+using Microsoft.OpenApi.Models;
+
 namespace PSWeb_Server
 {
     public class Program
@@ -10,7 +12,6 @@ namespace PSWeb_Server
             // Add services to the container.
 
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
@@ -24,12 +25,8 @@ namespace PSWeb_Server
             }
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
-
             app.MapControllers();
-
             app.Run();
         }
     }
