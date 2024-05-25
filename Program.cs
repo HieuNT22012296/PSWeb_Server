@@ -1,5 +1,7 @@
-
-using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
+using PSWeb_Server.Connection;
+using Serilog;
+using PSWeb_Server.Repository;
 
 namespace PSWeb_Server
 {
@@ -11,10 +13,13 @@ namespace PSWeb_Server
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers().AddJsonOptions(options => {
+                options.JsonSerializerOptions.PropertyNamingPolicy = null;
+            });
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
+            builder.Services.AddTransient<SqlConnectionFactory>();
+            builder.Services.AddScoped<UserRepository>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
